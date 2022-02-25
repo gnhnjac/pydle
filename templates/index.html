@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{ JSGlue.include() }}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/codemirror/lib/codemirror.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/codemirror/mode/python/python.js') }}"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='js/codemirror/lib/codemirror.css') }}"
+    />
+    <title>Pydle</title>
+    <style></style>
+  </head>
+  <body>
+    <div>
+      <textarea name="code" id="code"></textarea>
+    </div>
+    <div>
+      <button id="submit" onclick="sendData();">Enter</button>
+    </div>
+    <script src="{{ url_for('static', filename='js/interact.js') }}"></script>
+  </body>
+</html>
