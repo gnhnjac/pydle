@@ -15,12 +15,10 @@ def hello():
     return render_template('index.html')
 
 
-@app.route('/check', methods=['POST'])
-def check():
-    data = request.get_json()
-
-    return jsonify({'correct':data['guess'] == get_daily_result()})
-
+@app.route('/testcase/<question>', methods=['GET'])
+def check(question):
+    print(question)
+    return "(coding_problem_01([1, 2, 3, 4, 5])==[1, 5, 2, 4, 3])"
 
 if __name__ == "__main__":
     app.run(debug=True)
