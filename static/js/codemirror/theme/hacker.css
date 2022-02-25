@@ -1,0 +1,100 @@
+.CodeMirror .CodeMirror-linenumber, .CodeMirror .CodeMirror-scroll, .CodeMirror .CodeMirror-gutters {
+    background-color: #000;
+    color: #01DF3A;
+}
+.CodeMirror .CodeMirror-linenumber {
+    color: #04B404;
+}
+.CodeMirror .cm-matchingtag, .CodeMirror .CodeMirror-matchingtag {
+    border-bottom: 1px dotted #01DF3A;
+    background-color: transparent;
+}
+.CodeMirror .cm-matchingbracket, .CodeMirror .CodeMirror-matchingbracket {
+    color: #01DF3A !important;
+    box-shadow: 0px 0px 5px #000;
+    background-color: transparent;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+}
+.CodeMirror .CodeMirror-cursor {
+    border-right: 1px solid #01DF3A;
+    z-index: 3;
+}
+.CodeMirror .cm-comment {
+    color: #0B6121;
+    font-style: italic;
+}
+.CodeMirror .cm-bracket, .CodeMirror .cm-variable, .CodeMirror .cm-attribute, .CodeMirror .cm-operator {
+    color: #01DF3A !important;
+}
+.CodeMirror .cm-string, .CodeMirror .cm-string-2, .CodeMirror .cm-hr {
+    color: #01DF01;
+}
+.CodeMirror .cm-variable-2 {
+    color: #3ADF00;
+    border-bottom: 1px dashed #3ADF00;
+}
+.CodeMirror .CodeMirror-selected {
+    padding-left: 1px;
+    padding-right: 1px;
+    background-color: #ffffff;
+}
+.CodeMirror .cm-keyword, .CodeMirror .cm-def, .CodeMirror .cm-number {
+    color: #04B404;
+}
+.CodeMirror .cm-atom {
+    color: #298A08;
+}
+.CodeMirror .cm-meta {
+    color: #01DF3A !important;
+}
+.CodeMirror .cm-builtin {
+    color: #BFFF00;
+}
+.CodeMirror .cm-m-css.cm-tag {
+    color: #38610B;
+}
+.CodeMirror .cm-m-css.cm-property {
+    color: #04B404;
+    border-bottom: 1px dotted #01DF3A;
+}
+.CodeMirror .cm-m-css.cm-qualifier, .CodeMirror .cm-m-css.cm-variable-3 {
+    color: #9FF781;
+}
+.CodeMirror .cm-m-xml.cm-variable-2 {
+    color: white;
+}
+.CodeMirror .cm-m-xml.cm-tag {
+    color: #21610B;
+}
+.CodeMirror .cm-m-javascript.cm-operator {
+    color: #B4B4B4;
+}
+.CodeMirror .cm-m-javascript.cm-variable, .CodeMirror .cm-m-javascript.cm-variable-3, .CodeMirror .cm-m-javascript.cm-property {
+    color: greenyellow;
+}
+.CodeMirror .cm-m-javascript.cm-def {
+    color: #FE2E2E;
+}
+.CodeMirror .cm-m-javascript.cm-variable-2 {
+    color: #FE2E64;
+}
+.CodeMirror .CodeMirror-searching {
+    color: #000 !important;
+}
+.CodeMirror .CodeMirror-searching.searching-last, .CodeMirror .CodeMirror-searching.searching-first {
+    border-radius: 1px;
+    background-color: #01DF3A;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.8);
+}
+.CodeMirror .CodeMirror-searching.searching-current-match {
+    background-color: darkgreen;
+    box-shadow: 0 0 10px #FE2E2E;
+}
+.CodeMirror .CodeMirror-activeline-background {
+    background: rgba(1,223,58,0.3);
+    box-shadow: 0 0 10px #01DF3A;
+}
+.CodeMirror .CodeMirror-gutter-elt {
+    background: transparent;
+}

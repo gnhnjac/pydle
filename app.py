@@ -9,16 +9,18 @@ jsglue = JSGlue(app)
 
 def get_daily_result():
     return 10
-
 @app.route('/')
 def hello():
     return render_template('index.html')
 
+def get_daily_check(day):
+    with open("database.txt","r") as f:
+        lines = f.readlines()
+        return lines[day-1]
 
 @app.route('/testcase/<question>', methods=['GET'])
 def check(question):
-    print(question)
-    return "(coding_problem_01([1, 2, 3, 4, 5])==[1, 5, 2, 4, 3])"
+    return get_daily_check(int(question))
 
 if __name__ == "__main__":
     app.run(debug=True)

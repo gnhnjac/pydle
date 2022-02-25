@@ -51,7 +51,19 @@
         position: absolute;
         bottom: 0;
         right: 0;
+        width: 50%;
       }
+
+      .resetbtn {
+        font-size: 1.5em;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+      }
+
       .log {
         height: calc(50vh - 64px);
         margin-bottom: 0;
@@ -86,12 +98,16 @@
         animation-fill-mode: forwards;
       }
 
-      .share-btn
-      {
+      .appear-short {
+        animation: fadeInAnimation ease 1.3s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
+
+      .share-btn {
         font-size: 5em;
         margin: auto;
         display: block;
-
       }
 
       @keyframes fadeInAnimation {
@@ -102,6 +118,50 @@
           opacity: 1;
         }
       }
+
+      .popup {
+        width: 420px;
+        padding: 30px 40px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+        border-radius: 8px;
+        font-family: "Poppins", sans-serif;
+        z-index: 200;
+        text-align: center;
+        overflow-wrap: break-word;
+      }
+
+      .popup button {
+        position: absolute;
+        background-color: transparent;
+        font-size: 30px;
+        border-radius: 100%;
+        width: 40px;
+        height: 40px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        top: 0px;
+        right: 0px;
+      }
+
+      .popup p {
+        font-size: 14px;
+        text-align: left;
+        margin: 20px 0;
+        line-height: 25px;
+      }
+
+      #info {
+        cursor: pointer;
+      }
+      .cm-tab {
+        background-position: right;
+        background-repeat: no-repeat;
+        border-left: 1px solid silver;
+      }
     </style>
     <title>Pydle</title>
   </head>
@@ -109,7 +169,18 @@
     <div class="final-message" id="finalmsg">
       <h1 class="final-header">CONGRATS</h1>
       <h2 class="final-subheader">You beat today's challenge.</h2>
-      <button class="btn btn-info share-btn">Share Your Results</button>
+      <button class="btn btn-info share-btn" onclick="copyResults();">
+        Share Your Results
+      </button>
+    </div>
+    <div class="popup well btn appear-short" id="popup">
+      <button id="close">&times;</button>
+      <h2>How to play?</h2>
+      <p>
+        Complete the given function according to the objective.<wbr /> The
+        function must return the correct value.<wbr />
+        After you have completed the function, click the run button.
+      </p>
     </div>
     <nav class="navbar navbar-default navbar-static-top">
       <img
@@ -121,10 +192,11 @@
           margin-top: 15px;
           margin-left: 15px;
         "
+        id="info"
       />
       <h2 style="text-align: center">PYDLE</h2>
     </nav>
-    <div class="maindiv">
+    <div class="maindiv" id="main">
       <div>
         <textarea name="code" id="code"></textarea>
       </div>
@@ -133,20 +205,36 @@
         <br />
         <br />
       </div>
-      <div class="well motherboard" id="log">
+      <div class="well motherboard" id="log" style="overflow-wrap: normal">
         <h4 style="margin-top: 0; float: left; margin-left: 10px">
-          motherboard:
+          data-center:
         </h4>
+        <br />
+        <br />
+        <h5 style="margin-top: 0; float: left; margin-left: 10px">
+          objective:
+        </h5>
+        <br />
+        <br />
+        <h5 id="objective"></h5>
+        <h5 style="margin-top: 0; float: left; margin-left: 10px">stats:</h5>
         <br />
         <br />
         <p1 id="stats"></p1>
         <div class="submitdiv">
           <button
+            class="btn btn-primary resetbtn bold"
+            id="reset"
+            onclick="init();"
+          >
+            Reset
+          </button>
+          <button
             class="btn btn-primary submitbtn bold"
             id="submit"
             onclick="evaluateData();"
           >
-            Enter
+            Run
           </button>
         </div>
       </div>

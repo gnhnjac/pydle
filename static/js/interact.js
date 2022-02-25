@@ -1,14 +1,53 @@
+var already_finished = false;
+
+if (getCookie("pydle") != null) {
+  document.getElementById("main").visibility = "hidden";
+  document.getElementById("main").style.display = "none";
+  document.getElementById("popup").style.display = "none";
+  document.getElementById("finalmsg").style.visibility = "visible";
+  document.getElementById("finalmsg").classList.add("appear");
+  already_finished = true;
+}
+
 // globals
 
 var tries = 0;
 
 var question;
 
+document.querySelector("#close").addEventListener("click", function () {
+  document.querySelector(".popup").style.display = "none";
+});
+document.getElementById("info").addEventListener("click", function () {
+  document.querySelector(".popup").style.display = "block";
+});
+
 const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
   lineNumbers: true,
   mode: "python",
   theme: "hacker",
+  extraKeys: {
+    Tab: function (cm) {
+      cm.replaceSelection("    ", "end");
+    },
+  },
 });
+
+editor.setSelection(
+  {
+    line: editor.firstLine(),
+    ch: 0,
+    sticky: null,
+  },
+  {
+    line: editor.lastLine(),
+    ch: 0,
+    sticky: null,
+  },
+  { scroll: false }
+);
+//auto indent the selection
+editor.indentSelection("smart");
 
 function init(add) {
   // set value to daily challenge
@@ -30,6 +69,11 @@ function init(add) {
     editor.setValue(
       xhttp.responseText.substring(0, xhttp.responseText.indexOf("pass") + 4)
     );
+    document.getElementById("objective").innerHTML =
+      xhttp.responseText.substring(
+        xhttp.responseText.indexOf('"""') + 3,
+        xhttp.responseText.indexOf("Example")
+      );
   };
   xhttp.open(
     "GET",
@@ -72,10 +116,14 @@ async function evaluateData() {
           document
             .getElementById("log")
             .appendChild(document.createElement("br"));
-
           if (result) {
             document.getElementById("finalmsg").style.visibility = "visible";
             document.getElementById("finalmsg").classList.add("appear");
+            var share = `I completed today's pydle in ${tries} tries, here is my solution:@@@${editor
+              .getValue()
+              .split("\n")
+              .join("@@@")}`;
+            createCookie("pydle", share, "/");
           }
         })
         .catch((err) => {
@@ -107,3 +155,54 @@ var t = setInterval(() => {
     }
   }
 }, 1000);
+
+function copyResults() {
+  /* Copy the text inside the text field */
+  if (!already_finished) {
+    navigator.clipboard.writeText(
+      `I completed today's pydle in ${tries} tries, here is my solution:\n` +
+        editor.getValue()
+    );
+  } else {
+    var cook = getCookie("pydle");
+    navigator.clipboard.writeText(cook.split("@@@").join("\n"));
+  }
+  /* Alert the copied text */
+  alert("Copied the result to clipboard");
+}
+
+function createCookie(name, value, path) {
+  var expires = "";
+  var date = new Date();
+  var midnight = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
+    23,
+    59,
+    59
+  );
+  expires = "; expires=" + midnight.toGMTString();
+  if (!path) {
+    path = "/";
+  }
+  document.cookie = name + "=" + value + expires + "; path=" + path;
+}
+function getCookie(name) {
+  var dc = document.cookie;
+  var prefix = name + "=";
+  var begin = dc.indexOf("; " + prefix);
+  if (begin == -1) {
+    begin = dc.indexOf(prefix);
+    if (begin != 0) return null;
+  } else {
+    begin += 2;
+    var end = document.cookie.indexOf(";", begin);
+    if (end == -1) {
+      end = dc.length;
+    }
+  }
+  // because unescape has been deprecated, replaced with decodeURI
+  //return unescape(dc.substring(begin + prefix.length, end));
+  return decodeURI(dc.substring(begin + prefix.length, end));
+}
