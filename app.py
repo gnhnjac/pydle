@@ -7,6 +7,8 @@ from flask_jsglue import JSGlue
 app = Flask(__name__)
 jsglue = JSGlue(app)
 
+def get_daily_result():
+    return 10
 
 @app.route('/')
 def hello():
@@ -17,29 +19,7 @@ def hello():
 def check():
     data = request.get_json()
 
-
-    # create file-like string to capture output
-    code = StringIO()
-
-    # capture output and errors
-    sys.stdout = code
-
-    exception = False
-    try:
-        exec(data['code'])
-        result = code.getvalue()
-    except Exception as e:
-        exception = True
-        result = str(e)
-
-    # restore stdout and stderr
-    sys.stdout = sys.__stdout__
-    code.close()
-
-    if exception:
-        return jsonify({'data':result})
-
-    return jsonify({'data':result})
+    return jsonify({'correct':data['guess'] == get_daily_result()})
 
 
 if __name__ == "__main__":

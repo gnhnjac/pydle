@@ -5,21 +5,151 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="http://pypyjs.org/pypyjs-release/lib/Promise.min.js"></script>
+    <script src="http://pypyjs.org/pypyjs-release/lib/FunctionPromise.js"></script>
+    <script src="http://pypyjs.org/pypyjs-release/lib/pypyjs.js"></script>
+
     <script src="{{ url_for('static', filename='js/codemirror/lib/codemirror.js') }}"></script>
     <script src="{{ url_for('static', filename='js/codemirror/mode/python/python.js') }}"></script>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='js/codemirror/lib/codemirror.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='js/codemirror/theme/hacker.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="http://brobin.github.io/hacker-bootstrap/css/hacker.css"
+    />
+    <style>
+      .CodeMirror {
+        width: 50%;
+        height: calc(100vh - 64px);
+        float: left;
+        border-right: 1px solid green;
+      }
+
+      .submitdiv {
+        width: 50%;
+        margin-top: calc(12.5vh);
+        text-align: center;
+        float: right;
+      }
+      .navbar {
+        margin-bottom: 0;
+      }
+      .bold {
+        font-weight: bold;
+      }
+      .submitbtn {
+        font-size: 1.5em;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      .log {
+        height: calc(50vh - 64px);
+        margin-bottom: 0;
+      }
+      .motherboard {
+        border-top: 1px solid green;
+        height: 50vh;
+      }
+      p {
+        margin-left: 10px;
+        float: left;
+      }
+      .final-message {
+        margin-top: 30vh;
+        margin-left: 20vw;
+        z-index: 100;
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .final-header {
+        font-size: 20em;
+      }
+      .final-subheader {
+        font-size: 5em;
+        text-align: center;
+      }
+      .appear {
+        animation: fadeInAnimation ease 6s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
+
+      .share-btn
+      {
+        font-size: 5em;
+        margin: auto;
+        display: block;
+
+      }
+
+      @keyframes fadeInAnimation {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
     <title>Pydle</title>
-    <style></style>
   </head>
   <body>
-    <div>
-      <textarea name="code" id="code"></textarea>
+    <div class="final-message" id="finalmsg">
+      <h1 class="final-header">CONGRATS</h1>
+      <h2 class="final-subheader">You beat today's challenge.</h2>
+      <button class="btn btn-info share-btn">Share Your Results</button>
     </div>
-    <div>
-      <button id="submit" onclick="sendData();">Enter</button>
+    <nav class="navbar navbar-default navbar-static-top">
+      <img
+        src="{{ url_for('static', filename='resources/question.png') }}"
+        style="
+          float: left;
+          width: 30px;
+          height: 30px;
+          margin-top: 15px;
+          margin-left: 15px;
+        "
+      />
+      <h2 style="text-align: center">PYDLE</h2>
+    </nav>
+    <div class="maindiv">
+      <div>
+        <textarea name="code" id="code"></textarea>
+      </div>
+      <div class="well log" id="log">
+        <h4 style="margin-top: 0; float: left; margin-left: 10px">log:</h4>
+        <br />
+        <br />
+      </div>
+      <div class="well motherboard" id="log">
+        <h4 style="margin-top: 0; float: left; margin-left: 10px">
+          motherboard:
+        </h4>
+        <br />
+        <br />
+        <p1 id="stats"></p1>
+        <div class="submitdiv">
+          <button
+            class="btn btn-primary submitbtn bold"
+            id="submit"
+            onclick="sendData();"
+          >
+            Enter
+          </button>
+        </div>
+      </div>
     </div>
     <script src="{{ url_for('static', filename='js/interact.js') }}"></script>
   </body>
