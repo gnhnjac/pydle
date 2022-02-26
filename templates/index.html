@@ -4,6 +4,7 @@
     {{ JSGlue.include() }}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="http://pypyjs.org/pypyjs-release/lib/Promise.min.js"></script>
@@ -24,6 +25,7 @@
       rel="stylesheet"
       href="http://brobin.github.io/hacker-bootstrap/css/hacker.css"
     />
+    <link rel="icon" href="{{ url_for('static', filename='resources/favicon.ico') }}">
     <style>
       .CodeMirror {
         width: 50%;
@@ -174,12 +176,15 @@
       </button>
     </div>
     <div class="popup well btn appear-short" id="popup">
+      <h6 style="right:0;bottom:0;position:absolute;margin-right:5px;">Made by gnhnjac</h6>
       <button id="close">&times;</button>
       <h2>How to play?</h2>
       <p>
-        Complete the given function according to the objective.<wbr /> The
-        function must return the correct value.<wbr />
-        After you have completed the function, click the run button.
+        Complete the given function according to the objective.<wbr /> 
+        The function must work correctly.<wbr />
+        After you have completed the function, click the run button.<wbr />
+        <strong> Try to find the solution in the least tries!<wbr/>
+         Good luck and have fun!</strong>
       </p>
     </div>
     <nav class="navbar navbar-default navbar-static-top">

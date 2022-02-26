@@ -1,0 +1,590 @@
+def coding_problem_00(stack):
+    """
+    Given a stack of N elements, interleave the first half of the stack
+    with the second half reversed using one other queue.
+    Example:
+
+    >>> coding_problem_00([1, 2, 3, 4, 5])
+    [1, 5, 2, 4, 3]
+    >>> coding_problem_00([1, 2, 3, 4, 5, 6])
+    [1, 6, 2, 5, 3, 4]
+
+    Note: with itertools, you could instead islice(chain.from_iterable(izip(l, reversed(l))), len(l))
+    """
+    pass
+@@@@@@@
+def coding_problem_01(l):
+    """
+    Given an array of integers, return a new array such that each element at index i of
+    the new array is the product of all the numbers in the original array except the one at i.
+    Solve it without using division and in O(n).
+    Example:
+
+    >>> coding_problem_01([1, 2, 3, 4, 5])
+    [120, 60, 40, 30, 24]
+    """
+    pass
+@@@@@@@
+def coding_problem_02(array):
+    """
+    Given an array of integers, find the first missing positive integer in linear time and constant space.
+    You can modify the input array in-place.
+    Example:
+
+    >>> coding_problem_02([3, 4, -1, 1])
+    2
+    >>> coding_problem_02([1, 2, 0])
+    3
+    >>> coding_problem_02([4, 1, 2, 2, 2, 1, 0])
+    3
+    """
+    pass
+@@@@@@@
+def coding_problem_03(s):
+    """
+    Given the mapping a = 1, b = 2, ... z = 26, and an encoded message, count the number of ways it can be decoded.
+    Examples:
+
+    >>> coding_problem_03('111')  # possible interpretations: 'aaa', 'ka', 'ak'
+    3
+    >>> coding_problem_03('2626')  # 'zz', 'zbf', 'bfz', 'bfbf'
+    4
+    """
+    pass
+@@@@@@@
+def coding_problem_04(btree):
+    """
+    A unival tree (which stands for "universal value") is a tree where all nodes have the same value.
+    Given the root to a binary tree, count the number of unival subtrees.
+    Example:
+
+    >>> btree = (0, (0, (0, None, None), (0, (0, None, None), (0, None, None))), (1, None, None))
+    >>> coding_problem_04(btree)
+    6
+    """
+    pass
+@@@@@@@
+def coding_problem_05(numbers):
+    """
+    Given a list of integers, write a function that returns the largest sum of non-adjacent numbers.
+    The "largest sum of non-adjacent numbers" is the sum of any subset of non-contiguous elements.
+    Solution courtesy of Kye Jiang (https://github.com/Jedshady).
+    Examples:
+
+    >>> coding_problem_05([2, 4, 6, 8])
+    12
+    >>> coding_problem_05([5, 1, 1, 5])
+    10
+    >>> coding_problem_05([1, 2, 3, 4, 5, 6])
+    12
+    >>> coding_problem_05([-8, 4, -3, 2, 3, 4])
+    10
+    >>> coding_problem_05([2, 4, 6, 2, 5])
+    13
+    """
+    pass
+@@@@@@@
+def coding_problem_06(strings, prefix):
+    """
+    Implement an autocomplete system. That is, given a query string s and a dictionary of all possible query strings,
+    return all strings in the dictionary that have s as a prefix. Hint: Try pre-processing the dictionary into a more
+    efficient data structure to speed up queries.
+    Example:
+
+    >>> words = ['able', 'abode', 'about', 'above', 'abuse', 'syzygy']
+    >>> coding_problem_06(words, 'abo')
+    ['abode', 'about', 'above']
+    """
+    pass
+@@@@@@@
+def coding_problem_07(budget, choices):
+    """
+    There exists a staircase with N steps, and you can climb up either 1 or 2 steps at a time. Given N, write a
+    function that returns the number of unique ways you can climb the staircase. The order of the steps matters.
+    For example, if N is 4, then there are 5 unique ways:
+
+    1, 1, 1, 1
+    2, 1, 1
+    1, 2, 1
+    1, 1, 2
+    2, 2
+
+    What if, instead of being able to climb 1 or 2 steps at a time, you could climb any number from a set of positive
+    integers X? For example, if X = {1, 3, 5}, you could climb 1, 3, or 5 steps at a time.
+    Example:
+
+    >>> coding_problem_07(budget=4, choices=[1, 2])
+    5
+    """
+    pass
+@@@@@@@
+def coding_problem_08(s, k):
+    """
+    Given an integer k and a string s, find the length of the longest substring that contains at most k distinct
+    characters.
+    Example:
+
+    >>> coding_problem_08('abcba', 2)  # longest substring with at most 2 distinct characters is 'bcb'
+    3
+    >>> coding_problem_08('edabccccdccba', 3)  # 'bccccdccb'
+    9
+    """
+    pass
+@@@@@@@
+def coding_problem_09():
+    """
+    The area of a circle is defined as $\pi r^2$. Estimate $\pi$ to 3 decimal places using a Monte Carlo method.
+    Example:
+
+    >>> import math
+    >>> import random
+    >>> random.seed(0xBEEF)
+    >>> pi_approx = coding_problem_09()
+    >>> abs(math.pi - pi_approx) < 1e-2
+    True
+    """
+    pass
+@@@@@@@
+def coding_problem_10(path_str):
+    r"""
+    Suppose we represent our file system by a string in the following manner:
+    The string "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext" represents:
+
+        dir
+            subdir1
+            subdir2
+                file.ext
+
+    The directory dir contains an empty sub-directory subdir1 and a sub-directory subdir2 containing a file file.ext.
+    The string "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext" represents:
+
+        dir
+            subdir1
+                file1.ext
+                subsubdir1
+            subdir2
+                subsubdir2
+                    file2.ext
+
+    The directory dir contains two sub-directories subdir1 and subdir2. subdir1 contains a file file1.ext and an empty
+    second-level sub-directory subsubdir1. subdir2 contains a second-level sub-directory subsubdir2 containing a
+    file file2.ext.
+
+    We are interested in finding the longest (number of characters) absolute path to a file within our file system.
+    For example, in the second example above, the longest absolute path is "dir/subdir2/subsubdir2/file2.ext", and its
+    length is 32 (not including the double quotes).
+
+    Given a string representing the file system in the above format, return the length of the longest absolute path to
+    a file in the abstracted file system. If there is no file in the system, return 0.
+
+    The name of a file contains at least a period and an extension.
+    The name of a directory or sub-directory will not contain a period.
+    Examples:
+    
+    >>> coding_problem_10('file1.ext')
+    9
+
+    >>> coding_problem_10('dir\n\tfile1.ext')
+    13
+
+    >>> coding_problem_10('0\n\t23.567\n12345.789')
+    9
+
+    >>> coding_problem_10('dir\n\t\tfile1.ext')
+    Traceback (most recent call last):
+    ...
+    RuntimeError: Malformed path string: nesting more than one level at a time.
+
+    >>> coding_problem_10('dir\n\tfile1.ext\n\t\tchild_of_a_file.ext')
+    Traceback (most recent call last):
+    ...
+    RuntimeError: Malformed path string: a file cannot contain something else.
+
+    >>> coding_problem_10('dir\n\tfile1.ext\n\tsubdir\n\t\tsubsubdir\n\t\t\ttsubsubsubdir')
+    13
+
+    >>> coding_problem_10('dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext')
+    32
+    
+    >>> coding_problem_10('dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext' +
+    ...                   '\ndir2\n\tsubdir1\n\tsubdir2\n\t\tsubsubdir1\n\t\t\tsubsubsubdir3\n\t\t\t\tfile3.ext')
+    47
+    """
+    pass
+@@@@@@@
+def coding_problem_11(arr, k):
+    """
+    Given an array of integers and a number k, where 1 <= k <= length of the array, compute the maximum values of each
+    sub-array of length k. Do this in O(n) time and O(k) space. You can modify the input array in-place and you do not
+    need to store the results. You can simply print them out as you compute them.
+    Example:
+
+    >>> coding_problem_11([10, 5, 2, 7, 8, 7], 3)
+    [10, 7, 8, 8]
+    """
+    pass
+@@@@@@@
+def coding_problem_12(house_costs):
+    """
+    A builder is looking to build a row of N houses that can be of K different colors. He has a goal of minimizing cost
+    while ensuring that no two neighboring houses are of the same color. Given an N by K matrix where the nth row and
+    kth column represents the cost to build the nth house with kth color, return the minimum cost.
+    Example:
+
+    >>> house_size = [1, 2, 4, 2]  # size of the house
+    >>> color_cost = [1, 2, 4]  # cost of paint for each color
+    >>> house_costs = [[cc * hs for cc in color_cost] for hs in house_size]  # 4 houses, 3 colors
+    >>> coding_problem_12(house_costs)  # [1,2,4,2] . [1,2,1,2] == 1*1 + 2*2 + 1*4 + 2*2 == 13
+    13
+    """
+    pass
+@@@@@@@
+def coding_problem_13(times):
+    """
+    Given an array of time intervals (start, end) for classroom lectures (possibly overlapping),
+    find the minimum number of rooms required.
+    Example:
+
+    >>> coding_problem_13([(30, 75), (0, 50), (60, 150)])
+    2
+    """
+    pass
+@@@@@@@
+def coding_problem_14(dictionary, the_string):
+    """
+    Given a dictionary of words and a string made up of those words (no spaces), return the original sentence in a
+    list. If there is more than one possible reconstruction, return any of them. If there is no possible
+    reconstruction, then return null.
+    Examples:
+
+    >>> coding_problem_14(['Riccardo', 'Brigittie', 'and', 'lollipop'], 'RiccardoandBrigittie')
+    ['Riccardo', 'and', 'Brigittie']
+
+    >>> coding_problem_14(['quick', 'brown', 'the', 'fox'], 'thequickbrownfox')
+    ['the', 'quick', 'brown', 'fox']
+
+    >>> coding_problem_14(['bed', 'bath', 'bedbath', 'and', 'beyond'], 'bedbathandbeyond')
+    ['bed', 'bath', 'and', 'beyond']
+    """
+    pass
+@@@@@@@
+def coding_problem_15(rexp, string):
+    """
+    Implement regular expression matching with the following special characters:
+
+        . (period) which matches any single character
+        * (asterisk) which matches zero or more of the preceding element
+
+    That is, implement a function that takes in a string and a valid regular expression and returns whether or not the
+    string matches the regular expression.
+    Examples:
+
+    >>> coding_problem_15('ra.', 'ray')
+    True
+    >>> coding_problem_15('ra.', 'raymond')
+    False
+    >>> coding_problem_15('.*at', 'chat')
+    True
+    >>> coding_problem_15('.*at', 'chats')
+    False
+    """
+    pass
+@@@@@@@
+def coding_problem_16(not_a_linked_list, k):
+    """
+    Given a singly linked list and an integer k, remove the kth last element from the list. k is guaranteed to be
+    smaller than the length of the list. The list is very long, so making more than one pass
+@@@@@@@
+def coding_problem_17(brace_yourself):
+    """
+    Given a string of round, curly, and square open and closing brackets, return whether the brackets are
+    balanced (well-formed).
+    Examples:
+
+    >>> coding_problem_17('([])[]({})')
+    True
+    >>> coding_problem_17('([)]')
+    False
+    >>> coding_problem_17('((()')
+    False
+    """
+    pass
+@@@@@@@
+def coding_problem_18(word_list, max_line_length):
+    """
+    Write an algorithm to justify text. Given a sequence of words and an integer line length k, return a list of
+    strings which represents each line, fully justified. More specifically, you should have as many words as possible
+    in each line. There should be at least one space between each word. Pad extra spaces when necessary so that each
+    line has exactly length k. Spaces should be distributed as equally as possible, with the extra spaces, if any,
+    distributed starting from the left. If you can only fit one word on a line, then you should pad the right-hand side
+    with spaces. Each word is guaranteed not to be longer than k.
+    Example:
+
+    >>> coding_problem_18(["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"], 16)
+    ['the  quick brown', 'fox  jumps  over', 'the   lazy   dog']
+    """
+    pass
+@@@@@@@
+def coding_problem_19(rle):
+    """
+    Run-length encoding is a fast and simple method of encoding strings. The basic idea is to represent repeated
+    successive characters as a single count and character. Implement run-length encoding and decoding. You can assume
+    the string to be encoded have no digits and consists solely of alphabetic characters. You can assume the string to
+    be decoded is valid.
+    Examples:
+
+    >>> coding_problem_19('AAAABBBCCDAA')
+    '4A3B2C1D2A'
+    >>> coding_problem_19('4A3B2C1D2A')
+    'AAAABBBCCDAA'
+    """
+    pass
+@@@@@@@
+def coding_problem_20(arr):
+    """
+    You are given an array of non-negative integers that represents a two-dimensional elevation map where each element
+    is unit-width wall and the integer is the height. Suppose it will rain and all spots between two walls get filled
+    up. Compute how many units of water remain trapped on the map in O(N) time and O(1) space.
+    Examples:
+
+    >>> coding_problem_20([2, 1, 2])  # 1@1, 1 unit of water at index 1
+    1
+    >>> coding_problem_20([3, 0, 1, 3, 0, 5])  # 3@1 2@2 3@4
+    8
+    >>> coding_problem_20([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])  # 1@2 1@4 2@5 1@6 1@9
+    6
+    """
+    pass
+@@@@@@@
+def coding_problem_21(s, t, debt=0):
+    """
+    Given two strings, compute the edit distance between them.
+    The edit distance between two strings refers to the minimum number of character insertions, deletions, and
+    substitutions required to change one string to the other.
+    Example:
+
+    >>> coding_problem_21("kitten", "sitting")  # k>>s, e>>i, +g
+    3
+    >>> coding_problem_21("kitten", "cat")  # k>>c, i>>a, -ten
+    5
+    >>> coding_problem_21("black", "white")
+    5
+    >>> coding_problem_21("top", "dog")
+    2
+    """
+    pass
+@@@@@@@
+def coding_problem_22(exchange_matrix):
+    """
+    Suppose you are given a table of currency exchange rates, represented as a 2D array. Determine whether there is a
+    possible arbitrage: that is, whether there is some sequence of trades you can make, starting with some amount A of
+    any currency, so that you can end up with some amount greater than A of that currency.
+    There are no transaction costs and you can trade fractional quantities.
+
+    >>> em = [[1, 2, 3], [1./2, 1, 3./2], [1./3, 2./3, 1]]
+    >>> coding_problem_22(em)
+    True
+
+    >>> em[0][2] = 2.98
+    >>> coding_problem_22(em)
+    False
+    """
+    pass
+@@@@@@@
+def coding_problem_23(array):
+    """
+    Compute the running median of a sequence of numbers. That is, given a stream of numbers, print out the median of
+    the list so far on each new element. Recall that the median of an even-numbered list is the average of the two
+    middle numbers. Example:
+
+    >>> coding_problem_23([2, 1, 5, 7, 2, 0, 5])
+    [2, 1.5, 2, 3.5, 2, 2.0, 2]
+    """
+    pass
+@@@@@@@
+def coding_problem_24(s):
+    """
+    Given a string, find the palindrome that can be made by inserting the fewest number of characters as possible
+    anywhere in the word. If there is more than one palindrome of minimum length that can be made, return the
+    lexicographically earliest one (the first one alphabetically).
+    Examples:
+
+    >>> coding_problem_24("race")
+    'ecarace'
+    >>> coding_problem_24("google")
+    'elgoogle'
+    >>> coding_problem_24("aibohphobia")
+    'aibohphobia'
+    """
+    pass
+@@@@@@@
+def coding_problem_25(rgbs):
+    """
+    Given an array of strictly the characters 'R', 'G', and 'B', segregate the values of the array so that all the 'R's
+    come first, the 'G's come second, and the 'B's come last. You can only swap elements of the array.
+    Do this in linear time and in-place. For example:
+
+    >>> coding_problem_25(['G', 'B', 'R', 'R', 'B', 'R', 'G'])
+    ['R', 'R', 'R', 'G', 'G', 'B', 'B']
+    """
+    pass
+@@@@@@@
+def coding_problem_26(tree):
+    """
+    Given the root to a binary search tree, find the second largest node in the tree.
+    Example:
+
+    >>> tree = [9, [4, [1, None, None], [7, [5, None, None], None]], [31, [14, None, None], [82, None, None]]]
+    >>> coding_problem_26(tree)
+    31
+    """
+    pass
+@@@@@@@
+def coding_problem_27(s):
+    """
+    The power set of a set is the set of all its subsets. Write a function that, given a set, generates its power set.
+    You may also use a list or array to represent a set. Example:
+
+    >>> sorted([sorted(subset) for subset in coding_problem_27({1, 2, 3})], key=len)
+    [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
+    """
+    pass
+@@@@@@@
+def coding_problem_28(n):
+    """
+    You have an N by N board. Write a function that, given N, returns the number of possible arrangements of the board
+    where N queens can be placed on the board without threatening each other, i.e. no two queens share the same row,
+    column, or diagonal. The following are the first 7 terms of the sequence (from [Wikipedia's
+    https://en.wikipedia.org/wiki/Eight_queens_puzzle page):
+
+    >>> [coding_problem_28(n + 1) for n in range(7)]
+    [1, 0, 0, 2, 10, 4, 40]
+    """
+    pass
+@@@@@@@
+def coding_problem_29(numbers):
+    """
+    Given an array of integers where every integer occurs three times except for one integer, which only occurs once,
+    find and return the non-duplicated integer. Do this in O(N) time and O(1) space.
+    Examples:
+
+    >>> coding_problem_29([6, 1, 3, 3, 3, 6, 6])
+    1
+    >>> coding_problem_29([13, 19, 13, 13])
+    19
+    """
+    pass
+@@@@@@@
+def coding_problem_30(flights_db, starting_airport):
+    """
+    Given an unordered list of flights taken by someone, each represented as (origin, destination) pairs, and a
+    starting airport, compute the person's itinerary. If no such itinerary exists, return null. If there are multiple
+    possible itineraries, return the lexicographically smallest one. All flights must be used in the itinerary.
+    Examples:
+
+    >>> coding_problem_30([('SFO', 'HKO'), ('YYZ', 'SFO'), ('YUL', 'YYZ'), ('HKO', 'ORD')], 'YUL')
+    ['YUL', 'YYZ', 'SFO', 'HKO', 'ORD']
+    >>> coding_problem_30([('SFO', 'COM'), ('COM', 'YYZ')], 'COM')  # returns None
+
+    >>> coding_problem_30([('A', 'B'), ('A', 'C'), ('B', 'C'), ('C', 'A')], 'A')
+    ['A', 'B', 'C', 'A', 'C']
+
+    The itinerary ['A', 'C', 'A', 'B', 'C'] is also a valid however the first one is lexicographically smaller.
+    """
+    pass
+@@@@@@@
+def coding_problem_31(numbers, target):
+    """
+    Given a list of integers S and a target number k, write a function that returns a subset of S that adds up to k.
+    If such a subset cannot be made, then return null.
+    Integers can appear more than once in the list. You may assume all numbers in the list are positive.
+    Example:
+
+    >>> coding_problem_31([12, 1, 61, 5, 9, 2], 24)
+    [12, 9, 2, 1]
+    >>> coding_problem_31([12, 1, 61, 5, 9, 2], 25)  # return None
+
+    >>> coding_problem_31([12, 1, 61, 5, 9, 2], 19)
+    [12, 5, 2]
+    """
+    pass
+@@@@@@@
+def coding_problem_32(arr):
+    """
+    We can determine how "out of order" an array A is by counting the number of inversions it has. Two elements A[i]
+    and A[j] form an inversion if A[i] > A[j] but i < j. That is, a smaller element appears after a larger element.
+    Given an array, count the number of inversions it has. Do this faster than O(N^2) time.
+    You may assume each element in the array is distinct.
+    Examples:
+
+    >>> coding_problem_32([1, 2, 3, 4, 5])
+    0
+    >>> coding_problem_32([2, 4, 1, 3, 5])  # inversions: (2, 1), (4, 1), (4, 3)
+    3
+    >>> coding_problem_32([5, 4, 3, 2, 1])  # every distinct pair forms an inversion
+    10
+    """
+    pass
+@@@@@@@
+def coding_problem_33(str):
+    """
+    Given a string, find the longest palindromic contiguous substring. If there are more than one with the maximum
+    length, return any one. Examples:
+
+    >>> coding_problem_33("aabcdcb")
+    'bcdcb'
+    >>> coding_problem_33("bananas")
+    'anana'
+    """
+    pass
+@@@@@@@
+def coding_problem_34(prices):
+    """
+    Given a array of numbers representing the stock prices of a company in chronological order, write a function that
+    calculates the maximum profit you could have made from buying and selling that stock once. You must buy before you
+    can sell it. For example, given [9, 11, 8, 5, 7, 10], you should return 5, since you could buy the stock at 5
+    dollars and sell it at 10 dollars.
+
+    >>> coding_problem_34([9, 11, 8, 5, 7, 10])
+    5
+    """
+    pass
+@@@@@@@
+def coding_problem_35(arr):
+    """
+    Given an array of numbers, find the maximum sum of any contiguous subarray of the array.
+    For example, given the array [34, -50, 42, 14, -5, 86], the maximum sum would be 137, since we would take elements
+    42, 14, -5, and 86. Given the array [-5, -1, -8, -9], the maximum sum would be 0, since we would not take any
+    elements. Do this in O(N) time.
+    Examples:
+
+    >>> coding_problem_35([34, -50, 42, 14, -5, 86])
+    137
+    >>> coding_problem_35([-5, -1, -8, -9])
+    0
+    """
+    pass
+@@@@@@@
+def coding_problem_36(tree):
+    """
+    Suppose an arithmetic expression is given as a binary tree. Each leaf is an integer and each internal node
+    is one of '+', '-', '*' or '/'. Given the root to such a tree, write a function to evaluate it.
+    For example, given the following tree:
+
+         *
+       /   \
+      +     +
+     / \   / \
+    3   2 4   5
+
+    you should return 45, as it is (3 + 2) * (4 + 5).
+    Examples:
+
+    >>> coding_problem_36(('*', ('+', 3, 2), ('+', 4, 5)))  # (3 + 2) * (4 + 5) == 45
+    45
+    >>> coding_problem_36(('/', ('+', ('+', 1, 2), 3), 12))  # (1 + 2 + 3) / 12 == 0.5
+    0.5
+    """
+    pass
+@@@@@@@
+@@@@@@@
