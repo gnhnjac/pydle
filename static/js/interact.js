@@ -96,14 +96,8 @@ async function evaluateData() {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var text_case = this.responseText;
-
-      var skeleton = editor.getValue();
-      //skeleton = skeleton.replace("print(")
-
       pypyjs
-        .exec(
-          "import js\njquery=js.globals['$']\n" + skeleton + `\nx=${text_case}`
-        )
+        .exec(editor.getValue() + `\nx=${text_case}`)
         .then(() => {
           return pypyjs.get("x");
         })
