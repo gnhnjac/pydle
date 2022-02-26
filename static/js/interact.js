@@ -49,6 +49,16 @@ editor.setSelection(
 //auto indent the selection
 editor.indentSelection("smart");
 
+// Hook up output streams to write to the console.
+pypyjs.stdout = function (data) {
+  var tag = document.createElement("p");
+  var text = document.createTextNode(data);
+  tag.appendChild(text);
+  document.getElementById("log").appendChild(tag);
+  document.getElementById("log").appendChild(document.createElement("br"));
+  document.getElementById("log").appendChild(document.createElement("br"));
+};
+
 function init() {
   // set value to daily challenge
 
@@ -68,11 +78,7 @@ function init() {
         xhttp.responseText.indexOf("Example")
       );
   };
-  xhttp.open(
-    "GET",
-    `/getq/${question}`,
-    true
-  );
+  xhttp.open("GET", `/getq/${question}`, true);
   xhttp.send();
 }
 
@@ -91,8 +97,13 @@ async function evaluateData() {
     if (this.readyState == 4 && this.status == 200) {
       var text_case = this.responseText;
 
+      var skeleton = editor.getValue();
+      //skeleton = skeleton.replace("print(")
+
       pypyjs
-        .exec(editor.getValue() + `\nx=${text_case}`)
+        .exec(
+          "import js\njquery=js.globals['$']\n" + skeleton + `\nx=${text_case}`
+        )
         .then(() => {
           return pypyjs.get("x");
         })
