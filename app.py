@@ -2,10 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 import sys
 from io import StringIO
 import json
-from flask_jsglue import JSGlue
 
 app = Flask(__name__)
-jsglue = JSGlue(app)
 
 def get_daily_result():
     return 10
